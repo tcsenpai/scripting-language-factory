@@ -1,0 +1,33 @@
+{
+    "name": "rizzlang",
+    "displayName": "RizzLang",
+    "description": "A meme-based programming language",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "rizzlang",
+                "aliases": [
+                    "RizzLang"
+                ],
+                "extensions": [
+                    "ski"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rizzlang",
+                "scopeName": "source.rizzlang",
+                "path": "./syntaxes/rizzlang.tmLanguage.json"
+            }
+        ]
+    }
+}

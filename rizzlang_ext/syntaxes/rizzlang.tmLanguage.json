@@ -1,0 +1,128 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "RizzLang",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#function-call"
+        },
+        {
+            "include": "#decorator"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.rizzlang",
+                    "match": "\\b(rizz|fr|yeet|sus|vibe_check|boomer|zoomer)\\b"
+                },
+                {
+                    "name": "keyword.declaration.rizzlang",
+                    "match": "\\b(skibidi|toilet|ohio|based|stan|simp|slide into (\\w+))\\b"
+                },
+                {
+                    "name": "keyword.operator.rizzlang",
+                    "match": "\\b(bet)\\b"
+                },
+                {
+                    "name": "constant.language.rizzlang",
+                    "match": "\\b(no_cap|cap|mid|down_bad|up_good)\\b"
+                },
+                {
+                    "name": "support.function.rizzlang",
+                    "match": "\\b(bussin|slay|sheesh|goated|npc|glizzy|drip|rent_free|chad|touch_grass|ong|main_character|villain_arc|gaslighting|gatekeeping|girlboss|sigma|alpha|beta|skill_issue|cope|seethe|mald|ratio (\\w+))\\b"
+                },
+                {
+                    "name": "storage.modifier.rizzlang",
+                    "match": "\\b(lowkey|highkey|on god)\\b"
+                },
+                {
+                    "name": "keyword.control.exception.rizzlang",
+                    "match": "\\b(finna|bruh|karen|cringe|plot_twist|L_plus_ratio|no shot|spill the tea)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.rizzlang",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.rizzlang",
+                            "match": "\\\\."
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.rizzlang",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.rizzlang",
+                            "match": "\\\\."
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.triple.rizzlang",
+                    "begin": "\"\"\"",
+                    "end": "\"\"\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.rizzlang",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.number-sign.rizzlang",
+                    "match": "#.*$"
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.rizzlang",
+                    "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+                }
+            ]
+        },
+        "function-call": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.rizzlang",
+                    "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+                }
+            ]
+        },
+        "decorator": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.decorator.rizzlang",
+                    "match": "^\\s*(lowkey|highkey|on god)\\s*$"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.rizzlang"
+}

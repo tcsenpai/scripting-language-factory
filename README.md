@@ -1,5 +1,3 @@
-
-
 # Scripting Language Factory
 
 A powerful tool for creating, running, and managing custom programming languages based on any slang, meme terminology, or domain-specific vocabulary you prefer.
@@ -89,6 +87,27 @@ python transpiler.py compile script.ski -o output_dir -k -c my_mapping.json
 ```
 
 Compile your custom language to Python bytecode (.pyc files). The `-k` flag keeps the intermediate Python file.
+
+### Generate VS Code Extension
+
+```
+python transpiler.py -c my_mapping.json vscode -o my-language-extension
+```
+
+Generate a VS Code extension for syntax highlighting based on your custom language mapping. This creates all the necessary files for a complete VS Code extension, including:
+
+- Syntax highlighting based on your language keywords
+- Language configuration for comments, brackets, and indentation
+- Package manifest with language metadata
+
+To install the extension:
+1. Copy the generated folder to your VS Code extensions directory:
+   - Windows: `%USERPROFILE%\.vscode\extensions`
+   - macOS/Linux: `~/.vscode/extensions`
+2. Restart VS Code
+3. Open a file with your language's extension to see the highlighting in action
+
+NOTE: Advanced auto-completion is not yet supported, but basic auto-completion is available.
 
 ## Customizing Your Language
 

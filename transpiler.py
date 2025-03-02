@@ -9,6 +9,7 @@ import readline  # For better REPL experience
 import py_compile
 import shutil
 from pathlib import Path
+from vscode_extension_generator import generate_vscode_extension
 
 class Transpiler:
     def __init__(self, mapping_file):
@@ -303,6 +304,9 @@ class Transpiler:
 def main():
     parser = argparse.ArgumentParser(description='Transpile, execute, or compile custom language files')
     
+    # Common arguments that apply to all commands
+    parser.add_argument('-c', '--config', help='JSON mapping file (defaults to mapping.json in current directory)')
+    
     # Create subparsers for different commands
     subparsers = parser.add_subparsers(dest='command', help='Command to run')
     
@@ -331,8 +335,9 @@ def main():
     create_parser = subparsers.add_parser('create-mapping', help='Create a new mapping file with default values')
     create_parser.add_argument('output_file', help='Output file for the mapping')
     
-    # Common arguments
-    parser.add_argument('-c', '--config', help='JSON mapping file (defaults to mapping.json in current directory)')
+    # VS Code extension command
+    vscode_parser = subparsers.add_parser('vscode', help='Generate VS Code extension for syntax highlighting')
+    vscode_parser.add_argument('-o', '--output-dir', help='Output directory for the extension')
     
     args = parser.parse_args()
     
@@ -376,6 +381,9 @@ def main():
     
     elif args.command == 'repl':
         transpiler.start_repl()
+    
+    elif args.command == 'vscode':
+        generate_vscode_extension(args.config, args.output_dir)
 
 def create_default_mapping(filename):
     """Create a default mapping file with meme/slang terms."""
