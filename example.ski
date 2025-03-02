@@ -1,0 +1,26 @@
+ohio math
+
+skibidi add_numbers(a, b):
+    rizz a + b
+
+toilet Calculator:
+    skibidi __init__(self):
+        self.result = 0
+    
+    skibidi calculate(self, x, y):
+        finna:
+            self.result = add_numbers(x, y)
+            bussin(f"Result: {self.result}")
+            rizz self.result
+        bruh Exception as e:
+            bussin(f"Error: {e}")
+            rizz cap
+
+yeet __name__ == "__main__":
+    calc = Calculator()
+    fr i in range(1, 5):
+        bussin(f"Adding {i} and {i*2}")
+        calc.calculate(i, i*2)
+    
+    based open("output.txt", "w") as f:
+        f.write("Calculations complete!") 
