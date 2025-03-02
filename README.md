@@ -102,7 +102,7 @@ Compile your custom language to Python bytecode (.pyc files). The `-k` flag keep
 ### Generate VS Code Extension
 
 ```
-python transpiler.py -c my_mapping.json vscode -o my-language-extension
+python vscode_extension_generator.py path/to/mapping.json -o path/to/extension
 ```
 
 Generate a VS Code extension for syntax highlighting based on your custom language mapping. This creates all the necessary files for a complete VS Code extension, including:
@@ -112,11 +112,11 @@ Generate a VS Code extension for syntax highlighting based on your custom langua
 - Package manifest with language metadata
 
 To install the extension:
-1. Copy the generated folder to your VS Code extensions directory:
-   - Windows: `%USERPROFILE%\.vscode\extensions`
-   - macOS/Linux: `~/.vscode/extensions`
-2. Restart VS Code
-3. Open a file with your language's extension to see the highlighting in action
+1. Open the command palette (Ctrl+Shift+P or Cmd+Shift+P on macOS)
+2. Select "Developer: Install Extension from Location"
+3. Choose the extension folder `my-language-extension` directory
+4. Restart VS Code
+5. Open a file with your language's extension to see the highlighting in action
 
 NOTE: Advanced auto-completion is not yet supported, but basic auto-completion is available.
 
