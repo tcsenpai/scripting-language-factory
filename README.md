@@ -10,6 +10,7 @@ This project allows you to define your own programming language syntax by mappin
 - Direct execution of your language scripts
 - Interactive REPL for development
 - Compilation to Python bytecode
+- VS Code extension for syntax highlighting
 - Extensive customization options
 
 ## Installation
@@ -22,7 +23,15 @@ This project allows you to define your own programming language syntax by mappin
 
 2. No additional dependencies required beyond Python 3.6+
 
+## Included Example
+
+The repository includes an example of a custom language called "rizzlang", complete with a VS Code extension.
+
+You can find the example in the `rizzlang` directory and the VS Code extension in the `rizzlang_ext` directory.
+
 ## Quick Start
+
+NOTE: You can skip 1 and 2 if you want to use the included example. Just replace the mapping file and script with the ones in the `rizzlang` directory.
 
 1. Create a default mapping file:
    ```
