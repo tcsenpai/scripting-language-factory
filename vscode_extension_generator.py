@@ -272,4 +272,12 @@ def generate_vscode_extension(mapping_file, output_dir=None):
     # Create README.md
     with open(os.path.join(output_dir, "README.md"), 'w') as f:
         f.write(f"# {language_name} VS Code Extension\n\n")
-        f.write(f"This extension provides syntax highlighting for {language_name} files.\n") 
+        f.write(f"This extension provides syntax highlighting for {language_name} files.\n")
+        
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate a VS Code extension for syntax highlighting based on a mapping file.")
+    parser.add_argument("mapping_file", help="Path to the mapping file")
+    parser.add_argument("-o", "--output-dir", help="Output directory for the extension", default=None)
+    args = parser.parse_args()
+    
+    generate_vscode_extension(args.mapping_file, args.output_dir)

@@ -4,4 +4,6 @@ __pycache__/
 *.pyd
 *.pyw
 *.pyz
-*.pywz
+*.pywz+
+
+custom_langs/

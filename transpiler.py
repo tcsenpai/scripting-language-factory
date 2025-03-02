@@ -142,9 +142,36 @@ class Transpiler:
         Returns:
             str: Code with keywords replaced
         """
-        for keyword in self.sorted_keywords:
-            code = self.patterns[keyword].sub(self.mapping[keyword], code)
-        return code
+        # Split the code into string literals and non-string parts
+        parts = self._split_by_strings(code)
+        
+        # Only apply replacements to non-string parts
+        for i in range(0, len(parts), 2):  # Even indices are non-string parts
+            for keyword in self.sorted_keywords:
+                parts[i] = self.patterns[keyword].sub(self.mapping[keyword], parts[i])
+        
+        # Rejoin the parts
+        return ''.join(parts)
+    
+    def _split_by_strings(self, code):
+        """
+        Split code into string literals and non-string parts.
+        
+        Args:
+            code (str): Source code
+            
+        Returns:
+            list: Alternating non-string and string parts
+        """
+        # Regex to match string literals (handles both single and double quotes)
+        # Accounts for escaped quotes within strings
+        string_pattern = r'(\'(?:\\\'|[^\'])*\'|"(?:\\"|[^"])*")'
+        
+        # Split the code by string literals
+        parts = re.split(string_pattern, code)
+        
+        # parts will have non-string parts at even indices and string literals at odd indices
+        return parts
     
     def _fix_syntax_issues(self, code):
         """
@@ -207,9 +234,17 @@ class Transpiler:
         """
         result = python_code
         
-        # Apply regular word replacements first
-        for keyword in self.sorted_reverse_keywords:
-            result = self.reverse_patterns[keyword].sub(self.reverse_mapping[keyword], result)
+        # Split the code into string literals and non-string parts
+        parts = self._split_by_strings(result)
+        
+        # Only apply replacements to non-string parts
+        for i in range(0, len(parts), 2):  # Even indices are non-string parts
+            # Apply regular word replacements
+            for keyword in self.sorted_reverse_keywords:
+                parts[i] = self.reverse_patterns[keyword].sub(self.reverse_mapping[keyword], parts[i])
+        
+        # Rejoin the parts
+        result = ''.join(parts)
         
         # Then apply special patterns in reverse
         result = self._apply_reverse_special_patterns(result)
@@ -226,26 +261,33 @@ class Transpiler:
         Returns:
             str: Code with special patterns reversed
         """
-        for pattern, replacement in self.compiled_special_patterns.items():
-            # Create reverse pattern
-            reverse_pattern = re.compile(r'\b' + re.escape(replacement) + r'\b')
-            # Extract capture groups if any
-            match = re.search(r'\\(\d+)', pattern.pattern)
-            if match:
-                # If there are capture groups, we need to handle them specially
-                capture_group = int(match.group(1))
-                # Find all matches of the reverse pattern
-                matches = reverse_pattern.finditer(code)
-                for m in matches:
-                    # Extract the captured value
-                    captured = m.group(capture_group) if capture_group <= len(m.groups()) else ""
-                    # Replace with the original pattern format
-                    original_format = pattern.pattern.replace(f'\\{capture_group}', captured)
-                    code = code.replace(m.group(0), original_format)
-            else:
-                # Simple replacement
-                code = reverse_pattern.sub(pattern.pattern, code)
-        return code
+        # Split the code into string literals and non-string parts
+        parts = self._split_by_strings(code)
+        
+        # Only apply replacements to non-string parts
+        for i in range(0, len(parts), 2):  # Even indices are non-string parts
+            for pattern, replacement in self.compiled_special_patterns.items():
+                # Create reverse pattern
+                reverse_pattern = re.compile(r'\b' + re.escape(replacement) + r'\b')
+                # Extract capture groups if any
+                match = re.search(r'\\(\d+)', pattern.pattern)
+                if match:
+                    # If there are capture groups, we need to handle them specially
+                    capture_group = int(match.group(1))
+                    # Find all matches of the reverse pattern
+                    matches = reverse_pattern.finditer(parts[i])
+                    for m in matches:
+                        # Extract the captured value
+                        captured = m.group(capture_group) if capture_group <= len(m.groups()) else ""
+                        # Replace with the original pattern format
+                        original_format = pattern.pattern.replace(f'\\{capture_group}', captured)
+                        parts[i] = parts[i].replace(m.group(0), original_format)
+                else:
+                    # Simple replacement
+                    parts[i] = reverse_pattern.sub(pattern.pattern, parts[i])
+        
+        # Rejoin the parts
+        return ''.join(parts)
     
     def transpile_file(self, input_file, output_file=None, reverse=False):
         """
