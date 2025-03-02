@@ -2,6 +2,8 @@
 
 A powerful tool for creating, running, and managing custom programming languages based on any slang, meme terminology, or domain-specific vocabulary you prefer.
 
+![Example](example.png)
+
 ## Overview
 
 This project allows you to define your own programming language syntax by mapping custom keywords to Python equivalents. It provides a complete environment for working with your custom language, including:
