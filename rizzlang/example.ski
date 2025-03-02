@@ -1,0 +1,78 @@
+ohio math
+ohio random simp rng
+
+on god counter
+counter = 0  # Initialize the counter
+
+skibidi calculate_rizz(x, y):
+    vibe_check x < 10:
+        x += 1
+        bussin(f"Increasing rizz to {x}")
+    
+    yeet y > 20:
+        karen ValueError("Too much rizz")
+    sus:
+        rizz x * y
+
+toilet RizzCalculator(npc):
+    skibidi villain_arc(goated, name="Rizz Master"):
+        goated.name = name
+        goated.rizz_level = 0
+    
+    girlboss
+    skibidi rizz_level(goated):
+        rizz goated.rizz_level
+    
+    sigma
+    skibidi get_random_rizz():
+        rizz rng.randint(1, 100)
+    
+    skibidi add_rizz(goated, amount):
+        finna:
+            goated.rizz_level += amount
+            yeet goated.rizz_level > 100:
+                bussin("MAXIMUM RIZZ ACHIEVED!")
+                goated.rizz_level = 100
+            rizz goated.rizz_level
+        bruh L_plus_ratio simp e:
+            bussin(f"L + ratio: {e}")
+            rizz mid
+        plot_twist:
+            bussin("Rizz calculation complete")
+
+yeet main_character == "__main__":
+    no shot 2 + 2 == 4, "Math is working"
+    
+    calculator = RizzCalculator("Rizzy McRizzface")
+    
+    drip stats = {
+        "name": calculator.name,
+        "initial_rizz": calculator.rizz_level
+    }
+    
+    glizzy rizz_levels = []
+    
+    fr i bet range(5):
+        random_rizz = RizzCalculator.get_random_rizz()
+        bussin(f"Got random rizz: {random_rizz}")
+        calculator.add_rizz(random_rizz)
+        rizz_levels.append(calculator.rizz_level)
+        counter += 1  # Increment counter
+    
+    bussin(f"Final rizz levels: {rizz_levels}")
+    bussin(f"Counter value: {counter}")
+    
+    yeet calculator.rizz_level > 50:
+        bussin("High rizz achieved!")
+    sus:
+        bussin("Need more rizz...")
+        
+    # Demonstrate special syntax
+    yeet counter > 3:  # Changed from 10 to 3 so it will be true
+        bussin("Deleting counter...")
+        ratio counter  # Delete counter
+        finna:
+            bussin(counter)  # This will fail since counter is deleted
+        bruh NameError:
+            bussin("Counter successfully deleted!")
+            spill the tea  # Raise exception 
